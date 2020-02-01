@@ -3,7 +3,7 @@ Road Object Detection using Deep Learning, based on tensorflow framework and BDD
 
 UPDATES COMING SOON..
 
-Model inferred on an 8 min driving video (Recoded using GoPro by Steve) can be seen [here](https://drive.google.com/file/d/1hy9WNkPEuLUkddGNb18L5JUpLBAobzU2/view?usp=sharing). 
+Model inferred on an hour long driving video can be seen [here](https://youtu.be/kB-FWar58jY). 
 
 Here are a few samples from the video -> 
 ![](demo_videos/demo_gif.gif)
