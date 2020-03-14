@@ -83,7 +83,7 @@ item {
 
 ```
 * Download one of high performing models and extract the tar.gz file into `models` folder in `..research/object_detection`.
-* Download the config file for the model that is to be trained from [here](https://github.com/tensorflow/models/tree/master/research/object_detection/samples/configs) and paste it a folder (Folder where you want your trained model to be saved over the epochs. Example, create a folder `training_faster_rcnn_inception_resnet_v2_rgb_avg_mobileye_size` and paste the [config](https://github.com/tensorflow/models/blob/master/research/object_detection/samples/configs/mask_rcnn_inception_resnet_v2_atrous_coco.config) file) created under `..research/object_detection`.
+* Download the config file for the model that is to be trained from [here](https://github.com/tensorflow/models/tree/master/research/object_detection/samples/configs) and paste it a folder (Folder where you want your trained model to be saved over the epochs. Example, create a folder `training_faster_rcnn_inception_resnet_v2` and paste the [config](https://github.com/tensorflow/models/blob/master/research/object_detection/samples/configs/mask_rcnn_inception_resnet_v2_atrous_coco.config) file) created under `..research/object_detection`.
 * Now come the editing part, to edit paths and hyperparameters. Taking example of [frcnn with inception resnet v2](https://github.com/tensorflow/models/blob/master/research/object_detection/samples/configs/mask_rcnn_inception_resnet_v2_atrous_coco.config), Below are the major changes,
     1. Modify [num_classes](https://github.com/tensorflow/models/blob/984be23d3d0f7c324c230dd4014c5e5ee1359684/research/object_detection/samples/configs/mask_rcnn_inception_resnet_v2_atrous_coco.config#L10) to 10, bdd offers 10 classes.
     2. Modify [min and max dim](https://github.com/tensorflow/models/blob/984be23d3d0f7c324c230dd4014c5e5ee1359684/research/object_detection/samples/configs/mask_rcnn_inception_resnet_v2_atrous_coco.config#L13) to 992 and 1824 respectively.
@@ -105,9 +105,9 @@ To see the progress on tensorboard, run `tensorboard --logdir=training`
 ### 5. Freezing model
 Now that training is complete, the last step is to generate the frozen inference graph (.pb file). From the \object_detection folder, issue the following command, where “XXXX” in “model.ckpt-XXXX” should be replaced with the highest-numbered .ckpt file in the training folder:
 ```
-python3 export_inference_graph.py --input_type image_tensor  --pipeline_config_path training_faster_rcnn_inception_resnet_v2_rgb_avg_mobileye_size/faster_rcnn_inception_resnet_v2_atrous_coco.config --trained_checkpoint_prefix training_faster_rcnn_inception_resnet_v2_rgb_avg_mobileye_size/model.ckpt-200000 --output_directory exported_trained_graphs/faster_rcnn_inception_resnet_v2_rgb_avg_mobileye_size
+python3 export_inference_graph.py --input_type image_tensor  --pipeline_config_path training_faster_rcnn_inception_resnet_v2/faster_rcnn_inception_resnet_v2_atrous_coco.config --trained_checkpoint_prefix training_faster_rcnn_inception_resnet_v2/model.ckpt-200000 --output_directory exported_trained_graphs/faster_rcnn_inception_resnet_v2
 ```
-This creates a frozen_inference_graph.pb file in the `\object_detection\exported_trained_graphs/faster_rcnn_inception_resnet_v2_rgb_avg_mobileye_size` folder. The .pb file contains the object detection classifier.
+This creates a frozen_inference_graph.pb file in the `\object_detection\exported_trained_graphs/faster_rcnn_inception_resnet_v2` folder. The .pb file contains the object detection classifier.
 
 Use this model the infer on any image with the object detection pipeline...
 
